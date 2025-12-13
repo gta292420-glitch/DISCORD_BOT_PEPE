@@ -71,7 +71,7 @@ spam_task = None
 async def spam_loop(channel):
     global spam_active
     while spam_active:
-        reply = await generate_reply("dis un truc pour attirer les gens a parler")
+        reply = await generate_reply("plus personnen ne parle sur le serveur, dis quelque chose pour les attirer")
         await channel.send(reply)
         await asyncio.sleep(2)
 
