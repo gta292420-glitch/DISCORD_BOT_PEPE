@@ -73,7 +73,7 @@ async def spam_loop(channel):
     while spam_active:
         reply = await generate_reply("dis un truc pour attirer les gens a parler")
         await channel.send(reply)
-        await asyncio.sleep(12)
+        await asyncio.sleep(2)
 
 @bot.event
 async def on_ready():
