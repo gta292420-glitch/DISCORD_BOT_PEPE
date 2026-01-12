@@ -48,7 +48,7 @@ async def generate_reply(user_message: str):
                 {"role": "user", "content": user_message}
             ],
             max_tokens=50,
-            temperature=0.5
+            temperature=0.8
         )
         return completion.choices[0].message.content
     except Exception as e:
@@ -71,9 +71,9 @@ spam_task = None
 async def spam_loop(channel):
     global spam_active
     while spam_active:
-        reply = await generate_reply("plus personnen ne parle sur le serveur, dis quelque chose pour les attirer")
+        reply = await generate_reply("plus personnen ne parle sur le serveur, dis quelque chose pour les attirer.")
         await channel.send(reply)
-        await asyncio.sleep(2)
+        await asyncio.sleep(70)
 
 @bot.event
 async def on_ready():
@@ -124,7 +124,7 @@ async def spam_on(ctx):
         return
     spam_active = True
     spam_task = asyncio.create_task(spam_loop(ctx.channel))
-    await ctx.send("ok bro j'vais parler tout seul.")
+    await ctx.send("vazy bb j'vais parler tout seul.")
 
 @bot.command()
 async def spam_off(ctx):
@@ -146,14 +146,14 @@ async def follow_command(ctx, user: discord.User):
 async def unfollow_command(ctx, user: discord.User):
     global follow_targets
     follow_targets.discard(user.id)
-    await ctx.send(f"ok bro je follow plus {user.name}.")
+    await ctx.send(f"ok bro j'arrete de clc à {user.name}.")
 
 @bot.command(name="follow_all")
 async def follow_all_command(ctx):
     global follow_all, follow_targets
     follow_all = True
     follow_targets.clear()
-    await ctx.send("ok bro je follow tout le monde.")
+    await ctx.send("vazi je follow tout le monde.")
 
 @bot.command(name="follow_off")
 async def follow_off_command(ctx):
