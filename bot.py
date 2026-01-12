@@ -48,7 +48,7 @@ async def generate_reply(user_message: str):
                 {"role": "user", "content": user_message}
             ],
             max_tokens=50,
-            temperature=0.8
+            temperature=0.2
         )
         return completion.choices[0].message.content
     except Exception as e:
